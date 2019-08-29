@@ -1,0 +1,21 @@
+
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.profit .row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+  
+  .profit .item {
+    margin: 15px;
+    padding: 15px;
+    flex-basis: 530px;
+  }
+
+  .item {
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.5);
+  }

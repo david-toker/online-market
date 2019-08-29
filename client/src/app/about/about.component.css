@@ -1,0 +1,10 @@
+.about-text {
+    color: #3f51b5
+}
+img {
+    margin-top: 10px;
+    border: 1px solid #3f51b5;
+    border-radius: 4px;
+    padding: 5px;
+    width: 150px;
+  }

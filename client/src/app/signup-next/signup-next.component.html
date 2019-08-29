@@ -1,0 +1,41 @@
+<app-toolbar [inputUserToolbar]="activeUser"></app-toolbar>
+
+<div class="sign-block1">
+    <div class="wrapper" [formGroup]="myFormNext">
+    <h3>
+      Sign In - User      "Step 2"
+    </h3>
+    
+    
+      <mat-form-field>
+        <mat-label>City</mat-label>
+        <mat-select formControlName="mycity" required>
+          <mat-option *ngFor="let city of cities" [value]="city.value">
+            {{city.viewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <br>
+      
+      <mat-form-field>
+        <input matInput placeholder="Street" formControlName="street" required>
+        <mat-error *ngIf="myFormNext.get('street')">{{getErrorStreet()}}</mat-error>
+      </mat-form-field>
+      <br>
+
+      <mat-form-field>
+        <input matInput placeholder="Name" formControlName="first" required>
+        <mat-error *ngIf="myFormNext.get('first')">{{getErrorFirst()}}</mat-error>
+      </mat-form-field>
+      <br>
+
+      <mat-form-field>
+        <input type="text" matInput placeholder="Last Name" formControlName="last" required>
+        <mat-error *ngIf="myFormNext.get('last')">{{getErrorLast()}}</mat-error>
+      </mat-form-field>
+    
+      <div>
+        <button mat-raised-button (click)="finishRegister()" [disabled]="myFormNext.invalid">SUBMIT</button>
+      </div>
+    </div>
+    </div>

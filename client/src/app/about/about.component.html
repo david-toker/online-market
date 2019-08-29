@@ -1,0 +1,21 @@
+<img style="width: 200px" src="assets/img/diet.png">
+<p>
+  Available products in our store - {{products}}
+</p>
+
+<p>
+  Number of orders submitted in our store - {{orders}}
+</p>
+<hr>
+<div *ngIf="inputCondition" class="mat-typography about-text">
+  <h3>Notification:</h3>
+  <p *ngIf="inputLastCartDate">
+    You have open cart from {{inputLastCartDate | date}}. Subtotal: {{inputTotalSum | currency:'ILS':'symbol'}}
+  </p>
+  <p *ngIf="inputDateOfLastPurchase">
+    Your last purchase was on {{inputDateOfLastPurchase | date}}.
+  </p>
+  <p *ngIf="!inputLastCartDate && !inputDateOfLastPurchase" class="mat-body-2">
+    Welcome {{inputUser}} to your first shopping
+  </p>
+</div>

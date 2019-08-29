@@ -1,0 +1,11 @@
+.profit .row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+  
+  .profit .item-card {
+    text-align: center;
+    margin: 15px;
+    flex-basis: 200px;
+  }

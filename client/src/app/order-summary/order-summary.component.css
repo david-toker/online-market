@@ -1,0 +1,38 @@
+.example-headers-align .mat-expansion-panel-header-title,
+.example-headers-align .mat-expansion-panel-header-description {
+  flex-basis: 0;
+}
+
+.example-headers-align .mat-expansion-panel-header-description {
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+.notification {
+  text-align: center;
+  margin: 10px 0px;
+  color: rgb(194, 7, 7)
+}
+
+@media screen and (max-width: 700px) {
+  .header-summary {
+    float: left;
+    width: 65%;
+  }
+  .header-summary-btn {
+    float: left;
+    width: 35%;
+  }
+}
+
+@media screen and (min-width: 700px) {
+  .header-summary{
+    float: left;
+    width: 80%;
+  }
+  .header-summary-btn{
+    float: left;
+    width: 20%;
+  }
+}

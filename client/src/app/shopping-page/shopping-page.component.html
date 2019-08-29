@@ -1,0 +1,94 @@
+
+
+<div class="example-container" [class.example-is-mobile]="mobileQuery.matches" >
+  <mat-toolbar color="primary" class="example-toolbar">
+    <mat-toolbar-row>
+        <span>Market</span>
+        <mat-icon class="example-icon" aria-hidden="false" aria-label="Example heart icon">store</mat-icon>
+        <span class="example-spacer"></span>
+        <span>{{email}}</span>
+        <button aria-hidden="false" aria-label="Example delete icon" mat-icon-button [matMenuTriggerFor]="menu">
+          <mat-icon class="example-icon">person</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item (click)="logOutUser()">Logout</button>
+        </mat-menu>
+    </mat-toolbar-row>
+    <mat-toolbar-row>
+      <button class="btn-cart" mat-icon-button matTooltip="Open the cart" (click)="snav.toggle()"><mat-icon matBadge={{itemsFromCart.length}}  matBadgeColor="accent">shopping_cart</mat-icon></button>
+      
+      
+      <mat-form-field>
+        <input type="search" matInput placeholder="Search product" [(ngModel)]="productName" (keyup.enter)="findProduct()">
+        <button mat-icon-button matSuffix (click)="findProduct()">
+          <mat-icon>search</mat-icon></button>
+      </mat-form-field>
+    </mat-toolbar-row>
+  </mat-toolbar>
+
+  <mat-sidenav-container class="example-sidenav-container"
+                          [style.marginTop.px]="mobileQuery.matches ? 112 : 0">
+    <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'"
+                  [fixedInViewport]="mobileQuery.matches" fixedTopGap="112">
+      <div class="mycart">
+        <span class="mat-headline">My cart</span>
+        <button mat-icon-button matTooltip="Remove all product" color="warn" (click)="removeAllItems()">
+          <mat-icon>
+            delete_forever
+          </mat-icon>
+        </button>
+      </div>
+      <mat-nav-list class="cart-list">
+        <div class="mycart" *ngFor="let item of itemsFromCart">
+          <p style="font-weight: bold">{{item.product.name | titlecase}}</p>
+          
+          
+          <img src={{item.product.imagePath}} style="width: 100px"/>
+          <p>
+            <span>
+              Qty: {{item.quantity}}  
+            </span>
+              <span>
+                {{item.price | currency:'ILS':'symbol'}}
+              </span>
+            </p>
+            <button mat-stroked-button color="warn" (click)="removeItem(item._id)">
+              Remove
+            </button>
+          <hr>
+        </div>
+      </mat-nav-list>
+      <div class="cart-footer">
+      <span>Total: {{totalSum | currency:'ILS':'symbol'}}</span>
+      <button [disabled]="!itemsFromCart.length" mat-stroked-button color="accent" (click)="goToOrder()" matTooltip="go to payment" class="btn-order">
+        Order
+      </button>
+    </div>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+      <span *ngFor="let category of categories">
+        <button mat-button (click)="getProducts(category._id)">{{category.name}}</button>
+      </span>
+        <div class="profit">
+          <div class="row">
+              <mat-card class="item-card" *ngFor="let item of selectedCategory">
+                  <mat-card-header>
+                    <mat-card-title>{{item.name | titlecase}}</mat-card-title>
+                  </mat-card-header>
+                  <img mat-card-image src={{item.imagePath}} alt="photo" style="width: 130px">
+                  <mat-card-content>
+                    <p>
+                      Price: <span>{{item.price | currency:'ILS':'symbol'}}</span>
+                    </p>
+                  </mat-card-content>
+                  <mat-card-actions>
+                    <button mat-button (click)="addProduct(item._id, item.price)">ADD</button>
+                  </mat-card-actions>
+                </mat-card>
+          </div>
+        </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>
+  

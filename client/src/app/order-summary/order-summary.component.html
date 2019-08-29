@@ -1,0 +1,30 @@
+
+  <div class="header-summary"><h4>My Cart</h4></div>
+  
+  <div class="header-summary-btn" style="margin-top: 15px"><a mat-button routerLink="/shopping">Back to shop</a></div>
+
+
+
+<div style="clear: both">
+  <mat-accordion class="example-headers-align" *ngFor="let item of itemsFromCart">
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+              <span [innerHTML]="item.product.name  | productMarker : inputProductName"></span>
+          </mat-panel-title>
+          <mat-panel-description>
+              {{item.price | currency:'ILS':'symbol'}}
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <p>
+          Quantity: {{item.quantity}}
+        </p>
+        <img src={{item.product.imagePath}} style="width: 100px"/>
+      </mat-expansion-panel>
+    </mat-accordion>
+
+    <h3 class="notification">
+      NO CHANGES PERMITTED HERE
+    </h3>
+  <span>Total: {{totalSum | currency:'ILS':'symbol'}}</span>
+</div>

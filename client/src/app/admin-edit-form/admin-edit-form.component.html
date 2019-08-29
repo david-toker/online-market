@@ -1,0 +1,89 @@
+<mat-toolbar>
+  <mat-toolbar-row>
+      <span>{{inConditionForEditForm ? inputProductEdit?.name : 'New Product'}}</span>
+      <span class="example-spacer"></span>
+      <button mat-icon-button matTooltip="add product" (click)="openEditForm()">
+        <mat-icon class="example-icon">add</mat-icon>
+      </button> 
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<div *ngIf="!inConditionForEditForm" class="edit-form">
+  <div class="wrapper" [formGroup]="myForm">
+  
+  
+    <mat-form-field >
+      <input matInput placeholder="Product Name" formControlName="product">
+    </mat-form-field>
+  
+    <br>
+  
+    <mat-form-field>
+      <input type="number" min="1" matInput placeholder="Product Price" formControlName="price">
+    </mat-form-field>
+  
+    <br>
+  
+    <mat-form-field>
+      <mat-label>Category</mat-label>
+      <mat-select formControlName="category" required>
+        <mat-option *ngFor="let category of categories" [value]="category._id">
+          {{category.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    
+    <br>
+    
+
+    <button type="button" class="choose-file-btn" mat-raised-button (click)="fileInput.click()">Choose File</button>
+    <input hidden (change)="onFileSelected($event)" #fileInput type="file" name="myFile"  id="file" formControlName="prodImg">
+
+    
+    <div style="margin-top: 10px">
+      <button mat-raised-button color="primary" (click)="saveProduct()" [disabled]="myForm.invalid">SAVE</button>
+      <button style="margin-left: 15px; background-color: yellow" mat-raised-button (click)="cancelEditing()">SWITCH TO EDIT FORM</button>
+    </div>
+  </div>
+</div>
+
+
+  
+<div *ngIf="inConditionForEditForm">
+  
+  <div class="wrapper" [formGroup]="myForm2">
+
+
+    <mat-form-field >
+      <input matInput placeholder="Product Name" formControlName="product" value="{{inputProductEdit?.name}}">
+    </mat-form-field>
+  
+    <br>
+  
+    <mat-form-field>
+      <input type="number" min="1" matInput placeholder="Product Price" formControlName="price" value="{{inputProductEdit?.price}}">
+    </mat-form-field>
+  
+    <br>
+
+    <mat-form-field>
+      <mat-label>Category</mat-label>
+      <mat-select formControlName="category" required  >
+        <mat-option *ngFor="let category of categories" [value]="category._id">
+          {{category.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  
+    <br>
+    
+    <button type="button" class="choose-file-btn" mat-raised-button (click)="fileInput2.click()">Choose File</button>
+    <input hidden (change)="onFileSelected2($event)" #fileInput2 type="file" name="myFile2"  id="file2" formControlName="prodImg">
+
+    <div style="margin-top: 10px">
+      <button mat-raised-button color="primary" (click)="editProduct()" [disabled]="myForm2.get('category').hasError('required')">EDIT</button>
+      <button style="margin-left: 15px" mat-raised-button (click)="cancelEditing()">SWITCH TO ADD FORM</button>
+    </div>
+  </div>
+</div>

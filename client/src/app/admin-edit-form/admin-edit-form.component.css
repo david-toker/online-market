@@ -1,0 +1,16 @@
+.example-icon {
+  padding: 0 14px;
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.wrapper {
+  padding-left: 10px;
+}
+
+
+.choose-file-btn {
+  background-color: #28a745;
+}

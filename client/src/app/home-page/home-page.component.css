@@ -1,0 +1,59 @@
+.logincart,.homecart {
+    height: 490px;
+}
+
+@media screen and (max-width: 600px) {
+    .logincart,.homecart {
+        width: 100%;
+        float: left; 
+        text-align: center;
+        box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.5);
+        padding: 5px;
+        box-sizing: border-box;
+    }
+}
+
+@media only screen and (max-width: 1024px) and (min-width: 601px) {
+    .homecart {
+        width: 50%;
+        float: left; 
+        text-align: center;
+        box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.5);
+        padding: 2px;
+        box-sizing: border-box;
+        height: 510px;
+    }
+    .logincart {
+        width: 100%;
+        float: left; 
+        text-align: center;
+        box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.5);
+        padding: 5px;
+        box-sizing: border-box;
+    }
+}
+	
+
+@media screen and (max-width: 1200px) and (min-width: 1024px) {
+    .logincart,.homecart {
+        width: calc(100% / 3);
+        float: left; 
+        text-align: center;
+        box-shadow: 0 1px 1px 0 rgba(150, 103, 103, 0.5);
+        padding: 2px;
+        box-sizing: border-box;
+    }
+
+}
+
+
+@media screen and (min-width: 1200px) {
+    .logincart,.homecart {
+        width: calc(100% / 3);
+        float: left;         
+        text-align: center;
+        box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.5);;
+        padding: 2px;
+        box-sizing: border-box;
+    }
+}

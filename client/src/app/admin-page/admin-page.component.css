@@ -1,0 +1,76 @@
+.example-spacer {
+    flex: 1 1 auto;
+}
+
+.example-icon {
+    padding: 0 14px;
+}
+
+.admincart,.adminform {
+  border: 2px solid rgba(161, 146, 144, 0.904);
+  box-sizing: border-box;
+  /* height: 500px; */
+  height: 100vh;
+}
+
+.admincart {
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+.admincart::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+}
+
+
+  @media screen and (max-width: 600px) {
+    .admincart,.adminform {
+        width: 100%;
+        float: left; 
+        /* background-color: aqua; */
+        
+        text-align: center;
+        box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.5);
+        padding: 5px;
+        box-sizing: border-box;
+    }
+}
+
+@media only screen and (max-width: 1024px) and (min-width: 601px) {
+    .admincart {
+        width: 50%;
+        float: left; 
+    }
+    .adminform {
+        width: 50%;
+        float: left; 
+        
+    }
+}
+	
+
+@media screen and (max-width: 1200px) and (min-width: 1024px) {
+    .admincart {
+        width: 70%;
+        float: left;
+    }
+    .adminform {
+        width: 30%;
+        float: left; 
+        
+    }
+
+}
+
+
+@media screen and (min-width: 1200px) {
+    .admincart {
+        width: 70%;
+        float: left;
+    }
+    .adminform {
+        width: 30%;
+        float: left;
+    }
+}

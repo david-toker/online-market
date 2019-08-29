@@ -1,0 +1,27 @@
+
+<div style="margin-top: 50px">
+  <button *ngIf="inputConditionLog" class="shopping-but" mat-raised-button (click)="resumeShopping()" class="btn-start">{{inIsActive ? 'Resume Shopping' : 'Start Shopping'}}</button>
+  
+
+  <div [formGroup]="myForm">
+  <mat-form-field appearance="outline" style="width: 300px">
+    <mat-label>Email</mat-label>
+    <input matInput formControlName="username" required>
+    <mat-error *ngIf="myForm.get('username')">{{getErrorUser()}}</mat-error>
+  </mat-form-field>
+  <br>
+
+  <mat-form-field  appearance="outline" style="width: 300px">
+    <mat-label>Password</mat-label>
+    <input matInput [type]="hide ? 'password' : 'text'"  formControlName="pass" required>
+    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+    </button>
+    <mat-error *ngIf="myForm.get('pass')">{{getErrorPass()}}</mat-error>
+  </mat-form-field>
+  <br>
+  <button mat-raised-button [disabled]="myForm.invalid" (click)="loginWithEmail()">Login</button>
+  <a mat-button routerLink="/signup-step1">Sign up</a>
+</div>
+
+</div>

@@ -1,0 +1,20 @@
+<mat-toolbar  color="primary">
+    <mat-toolbar-row>
+        <span>Market</span>
+        <mat-icon class="example-icon" aria-hidden="false" aria-label="Example heart icon">store</mat-icon>
+        <span class="example-spacer"></span>
+        
+        <span>Hello {{inputUserToolbar}}</span>
+
+        <button aria-hidden="false" aria-label="Example delete icon" mat-icon-button [matMenuTriggerFor]="menu">
+            <mat-icon class="example-icon">
+                person
+            </mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="logOutUser()">
+            Logout
+        </button>
+        </mat-menu>
+    </mat-toolbar-row>
+</mat-toolbar>

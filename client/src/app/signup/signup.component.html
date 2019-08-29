@@ -1,0 +1,41 @@
+<app-toolbar [inputUserToolbar]="activeUser"></app-toolbar>
+
+<div class="sign-block1">
+<div class="wrapper" [formGroup]="myForm">
+<h3>
+  Sign In - User      "Step 1"
+</h3>
+
+  <mat-form-field >
+    <input type="number" matInput placeholder="ID" formControlName="idOfUser" (blur)="onBlur()">
+    <mat-error *ngIf="myForm.get('idOfUser')">{{getErrorId()}}</mat-error>
+  </mat-form-field>
+
+  <br>
+
+  <mat-form-field>
+    <input matInput placeholder="Enter your email" formControlName="email" required >
+    <mat-error *ngIf="myForm.get('email')">{{getErrorMail()}}</mat-error>
+  </mat-form-field>
+
+  <br>
+
+  <mat-form-field>
+    <input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'" formControlName="pass1">
+    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+    </button>
+  </mat-form-field>
+
+  <br>
+  <mat-form-field>
+    <input type="password" matInput placeholder="Password Confirm" formControlName="pass2">
+  </mat-form-field>
+
+  <div>
+    <button mat-raised-button (click)="goToNextStep()" [disabled]="myForm.invalid">Continue...</button>
+  </div>
+</div>
+</div>
+
+

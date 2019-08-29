@@ -1,0 +1,41 @@
+<p><span>Order</span></p>
+<p><span>Shipping Details</span></p>
+
+<div class="sign-block1">
+  <div class="wrapper" [formGroup]="myForm">
+  
+    <mat-form-field>
+      <mat-label>City</mat-label>
+      <mat-select formControlName="mycity" required>
+        <mat-option *ngFor="let city of cities" [value]="city.value">
+          {{city.viewValue}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <br>
+    
+    <mat-form-field>
+      <input matInput placeholder="Street" formControlName="street" required (dblclick)="insertStreet()">
+      <mat-error *ngIf="myForm.get('street')">{{getErrorStreet()}}</mat-error>
+    </mat-form-field>
+    <br>
+
+    <mat-form-field>
+      <input matInput [min]="minDate" [matDatepickerFilter]="myFilter" [matDatepicker]="picker" placeholder="Shipping Date" formControlName="shippingdate" required (dateChange)="addEvent('change', $event)">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+      <mat-error *ngIf="myForm.get('shippingdate')">{{getErrorDate()}}</mat-error>
+    </mat-form-field>
+
+    <br>
+
+    <mat-form-field>
+      <input type="text" matInput placeholder="Credit Card" formControlName="credit" required>
+      <mat-error *ngIf="myForm.get('credit')">{{getErrorCredit()}}</mat-error>
+    </mat-form-field>
+  
+    <div>
+      <button mat-raised-button (click)="orderAndPay()" [disabled]="myForm.invalid">Order</button>
+    </div>
+  </div>
+</div>

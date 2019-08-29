@@ -1,0 +1,7 @@
+<app-toolbar [inputUserToolbar]="activeUser"></app-toolbar>
+
+<div style="margin-top: 15px">
+  <app-login class="logincart" [inputConditionLog]="isLogin" [inIsActive]="isActive"></app-login>
+  <app-ad class="homecart"></app-ad>
+  <app-about class="homecart"  [inputUser]="activeUser" [inputCondition]="isLogin" [inputLastCartDate]="dateOfCart" [inputDateOfLastPurchase]="dateOfLastPurchase" [inputTotalSum]="totalSum"></app-about>
+</div>

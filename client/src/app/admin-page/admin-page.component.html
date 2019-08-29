@@ -1,0 +1,28 @@
+<mat-toolbar color="primary" class="order-toolbar">
+  <mat-toolbar-row>
+      <span>Market</span>
+      <mat-icon class="example-icon" aria-hidden="false" aria-label="Example heart icon">store</mat-icon>
+      <span class="example-spacer"></span>
+      <span>{{activeAdmin}}</span>
+      <button aria-hidden="false" aria-label="Example delete icon" mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon class="example-icon">person</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="logOutUser()">Logout</button>
+      </mat-menu>
+      
+  </mat-toolbar-row>
+  <mat-toolbar-row>
+    <mat-form-field>
+      <input type="search" matInput placeholder="Search product" [(ngModel)]="productName" (keyup.enter)="findProduct()">
+      <button mat-icon-button matSuffix (click)="findProduct()">
+        <mat-icon>search</mat-icon></button>
+    </mat-form-field>
+
+    <span class="example-spacer"></span>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<app-admin-edit-form class="adminform" (showNewProdEmit)="searchNewProduct($event)" [inputProductEdit]="productForEdit" [inConditionForEditForm]="conditionForEditForm"></app-admin-edit-form>
+
+<app-admin-grocery class="admincart" [inputCategory]="selectedCategory" (editProductEmit)="editProduct($event)"></app-admin-grocery>

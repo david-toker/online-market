@@ -1,0 +1,13 @@
+<h1 mat-dialog-title>Add product to cart</h1>
+<div mat-dialog-content>
+  <p>insert quantity</p>
+  <mat-form-field>
+    <input type="number" min="1" value="1" matInput placeholder="Quantity" [(ngModel)]="data.quantity">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close>No Thanks</button>
+  <button mat-button [mat-dialog-close]="data.quantity" cdkFocusInitial>Ok</button>
+</div>
+
+

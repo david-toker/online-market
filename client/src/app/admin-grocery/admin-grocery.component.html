@@ -1,0 +1,41 @@
+<div style="background-color: #f5f5f5; height: 64px;">
+  <span *ngFor="let category of categories">
+    <button mat-button (click)="getProducts(category._id)">{{category.name}}</button>
+  </span> 
+</div>
+    
+<div class="profit">
+  <div class="row" *ngIf="inputCategory.length">
+      <mat-card class="item-card" *ngFor="let item of inputCategory">
+        <mat-card-header>
+          <mat-card-title>{{item.name  | titlecase}}</mat-card-title>
+        </mat-card-header>
+        <img mat-card-image src={{item.imagePath}} alt="photo" style="width: 130px">
+        <mat-card-content>
+          <p>
+            Price: <span>{{item.price | currency:'ILS':'symbol'}}</span>
+          </p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-button (click)="editProduct(item)">EDIT</button>
+        </mat-card-actions>
+      </mat-card>
+  </div>
+  <div class="row" *ngIf="!inputCategory.length">
+      <mat-card class="item-card" *ngFor="let item of selectedCategory">
+        <mat-card-header>
+          
+          <mat-card-title>{{item.name  | titlecase}}</mat-card-title>
+        </mat-card-header>
+        <img mat-card-image src={{item.imagePath}} alt="photo" style="width: 130px">
+        <mat-card-content>
+          <p>
+            Price: <span>{{item.price | currency:'ILS':'symbol'}}</span>
+          </p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-button (click)="editProduct(item)">EDIT</button>
+        </mat-card-actions>
+      </mat-card>
+  </div>
+</div>
